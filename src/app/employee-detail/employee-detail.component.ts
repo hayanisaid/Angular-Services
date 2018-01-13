@@ -8,14 +8,17 @@ import {EmployeeService} from '../employee.service';
 })
 export class EmployeeDetailComponent implements OnInit {
   employee=[];
+  msgError:string;
   constructor(private _Detail:EmployeeService) { }
 
   ngOnInit() {
    // this.employee=this._Detail.getEmployeeName();
    /*get the data from json file*/
+   /*Handle the exception of reponse push the seconde parameter to subscribe*/
 
    this._Detail.getEmployeeName().
-   subscribe(responData=>this.employee=responData);
+   subscribe(responData=>this.employee=responData,
+   	errorMsgofData=>this.msgError=errorMsgofData);
   }
 
 }

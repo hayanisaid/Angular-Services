@@ -1,22 +1,31 @@
-import {Injectable} from '@angular/core';
+import {Injectable}      from '@angular/core';
 /*iport Http and Response from http*/
-import {Http ,Response} from        '@angular/http';
-/*import map operator form rxjs*/
+import {Http ,Response}  from        '@angular/http';
+import {Observable}      from 'rxjs/Observable';
+ /*import map operator form rxjs*/
 import "rxjs/add/operator/map";
+import "rxjs/add/operator/catch";
+import "rxjs/add/observable/throw"
 
 
 
 @Injectable()
 export class EmployeeService{
     
-    private _url: string = "./api/api.json"
+    private _url: string = "api.json"
      /*inject the dependency*/
      constructor(private _http:Http){}
 	getEmployeeName(){
 		return this._http.get(this._url)
-		.map((response:Response)=>response.json());
+		.map((response:Response)=>response.json())
+        /*call a metho*/
+        .catch(this._errorHandler);
 	}
-
+    _errorHandler(error:Response){
+      console.error(error)
+      // return observable
+      return Observable.throw(error || 'Server Error')
+    }
 
 	/*return [
     {'id':1,'name':'said','gender':'male'},
