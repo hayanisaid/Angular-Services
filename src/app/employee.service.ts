@@ -1,0 +1,17 @@
+import {Injectable} from '@angular/core';
+
+
+
+@Injectable()
+export class EmployeeService{
+
+	getEmployeeName(){
+		return [
+    {'id':1,'name':'said','gender':'male'},
+    {'id':2,'name':'johon','gender':'male'},
+    {'id':3,'name':'ahmed','gender':'male'},
+    {'id':4,'name':'karim','gender':'male'},
+    {'id':1,'name':'layla','gender':'Female'}
+  ];
+	}
+}
