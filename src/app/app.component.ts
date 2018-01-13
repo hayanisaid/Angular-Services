@@ -22,6 +22,9 @@ export class AppComponent implements OnInit {
   constructor(private _Employee:EmployeeService){}
 
   ngOnInit(){
-  	this.employee=this._Employee.getEmployeeName();
+  	// this.employee=this._Employee.getEmployeeName();
+  	/*get the data from json file*/
+  	this._Employee.getEmployeeName().
+  	subscribe(reponseData=>this.employee=reponseData);
   }
 }
